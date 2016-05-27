@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slider</title>
+  <link rel="stylesheet" type="text/css" href="https://www.holamascota.com/publicaciones/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://www.holamascota.com/publicaciones/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://www.holamascota.com/publicaciones/css/jquery.fancybox.css" />
+  <!-------------------- Style slider ------ -->
+  <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="slick-theme.css"/>
+</head>
+<body>
+  <!------------------------- Header ------------------------>
+  <nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="col-md-4 col-sm-4 col-xs-12 nav-top">
+    <ul>
+    <li><a href="https://www.holamascota.com/publicaciones/"><i class="fa fa-home"></i>Inicio</a></li>
+    <li><p>/</p></li>
+    <li><a href="https://www.holamascota.com/publicaciones/inicio/anuncios" class="active"><i class="fa fa-list"></i>Publicaciones</a></li>
+    <li><p>/</p></li>
+    <li><a href="https://www.holamascota.com/tienda/" target="_blank"><i class="fa fa-shopping-cart"></i>Tienda</a></li>
+    <li><p>/</p></li>
+    <li><a href="https://holamascota.com/blogholamascota/" target="_blank"><i class="fa fa-pencil"></i>Blog</a></li>
+    </ul>
+  </div>
+  <div class="col-md-4 col-sm-4 col-xs-12 logo-header">
+    <div class="navbar-header">
+    <a class="navbar-brand" rel="home" href="https://www.holamascota.com/publicaciones/" title="">
+      <img src="https://www.holamascota.com/publicaciones/img/logo.png" alt="Hola Mascota">
+    </a>
+    </div>
+  </div>
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <div class="navbar-right col-md-4 col-sm-4 col-xs-12">
+    <button class="btn btn-default" data-toggle="modal" data-target="#modalLogin" onclick="ingresar()">Ingresar</button>
+    <button class="btn btn-default" data-toggle="modal" data-target="#modalRegistro">Registrarme</button>
+  </div>
+  <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="col-md-12 col-sm-12 col-xs-12 modal-content no-padding">
+    <div class="col-md-12 col-sm-12 col-xs-12 modal-header">
+    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title" id="myModalLabel">Regístrate y Publica Gratis</h4>
+    </div>
+    <div class="col-md-12 col-xs-12 center facebookLogin">
+    <div class="col-md-12 col-xs-12 modal-subtitle no-padding"><h5>Registrarme con Facebook</h5></div>
+    <!-- boton facebook -->
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 modal-body">
+    <div class="col-md-12 col-xs-12 modal-subtitle"><h5>Registrarme en holamascota</h5></div>
+    <form action="https://www.holamascota.com/publicaciones/registro" method="post" class="form-inline" role="form" id="default-behavior" onsubmit="return validar_terminos()">
+      <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required="required"/>
+        </div>
+      </div>
+      </div>
+      <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" required="required"/>
+        </div>
+      </div>
+      </div>
+      <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+        <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" required="required"/>
+        </div>
+      </div>
+      </div>
+      <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required="required"/>
+        </div>
+      </div>
+      </div>
+      <div class="col-md-6 col-xs-12">
+      <div class="form-group">
+        <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+        <input type="password" class="form-control" id="repassword" name="repassword" placeholder="Confirmar Contraseña" required="required"/>
+        </div>
+      </div>
+      </div>
+      <div class="col-md-6 col-xs-12">
+      <span style="color:red"></span>
+      </span>
+      </div>
+      <div class="col-md-12 col-xs-12"><div class="page-header"></div></div>
+      <div class="col-md-12 col-xs-12">
+      <div class="checkbox">
+        <label>
+        <input type="checkbox" id="aceptar_terminos"> He leído y acepto los <a href="https://www.holamascota.com/publicaciones/registro/terminos">Términos y Condiciones</a>
+        </label>
+      </div>
+      </div>
+      <div class="col-md-12 col-xs-12">
+      <div class="checkbox">
+        <label>
+        <input type="checkbox" name="boletin" value="boletin" checked> Quiero recibir notificaciones de holamascota
+        </label>
+      </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 modal-footer">
+    <div class="col-md-6 col-sm-6 col-xs-6"><input type="submit" name="submit" value="Registrarme" class="btn btn-primary"></input></div>
+    <div class="col-md-6 col-sm-6 col-xs-6"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button></div>
+    </div>
+   </form>
+  </div>
+  </div>
+</div>
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="col-md-12 col-xs-12 modal-content no-padding">
+    <div class="col-md-12 col-xs-12 modal-header">
+    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title" id="myModalLabel">Iniciar Sesión</h4>
+    </div>
+    <div class="col-md-12 col-xs-12 center facebookLogin">
+    <div class="col-md-12 col-xs-12 modal-subtitle"><h5>Iniciar sesión con Facebook</h5></div>
+    <!-- boton facebook -->
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+    </div>
+    <div class="col-md-12 col-xs-12 modal-body no-padding">
+    <div class="col-md-12 col-xs-12 modal-subtitle"><h5>Iniciar sesión en holamascota</h5></div>
+    <form action="https://www.holamascota.com/publicaciones/admin" method="post" class="form-2">
+      <div class="col-md-6" style="visibility:hidden">
+      <div class="form-group">
+        <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+        <input type="text" class="form-control" id="username-login" name="username" placeholder="Correo electrónico o usuario" />
+        </div>
+      </div>
+      </div>
+      <div class="col-md-12">
+      <div class="form-group">
+        <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+        <input type="text" class="form-control" id="username-login" name="username" placeholder="Correo electrónico o usuario" />
+        </div>
+      </div>
+      </div>
+      <div class="col-md-12">
+      <div class="form-group">
+        <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+        <input type="password" class="form-control" id="password-login" name="password" placeholder="Contraseña" />
+        </div>
+      </div>
+      </div>
+
+      <div class="col-md-12 col-xs-12"><div class="page-header"></div></div>
+      <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+         <i class="fa fa-caret-right"></i> <a href="https://www.holamascota.com/publicaciones/registro/recuperar-acceso">Olvidaste la contraseña?</a>
+        </label>
+      </div>
+      </div>
+      <div class="col-md-6">
+      <label>
+      ¿Aún no tienes una cuenta? <a href="https://www.holamascota.com/publicaciones/registro">Inscríbete</a>
+      </label>
+      </div>
+    </div>
+    <div class="col-md-12 col-xs-12 modal-footer">
+    <div class="col-md-6 col-sm-6 col-xs-6"><input type="submit" name="submit" value="Login" class="btn btn-primary"></button></div>
+    <div class="col-md-6 col-sm-6 col-xs-6"><button type="button" class="btn btn-default" style="background:#696969" data-dismiss="modal">Cancelar</button></div>
+    </form>
+    </div>
+  </div>
+  </div>
+</div>
+
+<script>
+function validar_terminos(){
+  if( !document.getElementById("aceptar_terminos").checked ){
+    alert("Para registrarse debe aceptar los términos y condiciones de Holamascota.com");
+    return false;
+    }
+  else{
+    return true;
+  }
+}
+</script>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  </div><!-- /.container-fluid -->
+</nav>
+  <!------------------------- Slider Mark --------------------->
+    <div class="sliderPets__main">
+      <div> <a href="https://www.holamascota.com/tienda/venta-camas-para-perros.html"> <img src="https://www.holamascota.com/publicaciones/uploads/slider/camas.jpg" class="img-responsive" alt="slider holamascota"></a></div>
+      <div> <a href="https://www.holamascota.com/tienda/venta-concentrados-para-mascotas/concentrados-para-perros.html"> <img src="https://www.holamascota.com/publicaciones/uploads/slider/concentrado.jpg" class="img-responsive" alt="slider holamascota"> </a> </div>
+      <div> <a href="https://www.holamascota.com/publicaciones/paseadores/perros"> <img src="https://www.holamascota.com/publicaciones/uploads/slider/paseadores.jpg" class="img-responsive" alt="slider holamascota"> </a> </div>
+      <div> <a href="https://www.holamascota.com/tienda/ropa-27/venta-camisetas-para-perros-gatos.html"> <img src="https://www.holamascota.com/publicaciones/uploads/slider/ropa-perros.jpg" class="img-responsive" alt="slider holamascota"> </a> </div>
+    </div>
+  <!-------------------------- Footer  ------------------------------>
+  <div class="col-md-12 col-xs-12 footer">
+    <div class="col-md-15 col-sm-3">
+      <h4>Sobre holamascota</h4>
+      <p align="justify">Holamascota nace por la necesidad del crecimiento del mercado de las mascotas y la competencia directa e indirecta, por ello nos dedicamos al Comercio electrónico especializado en mascotas, nuestro objetivo es brindar soluciones On-line a personas, veterinarias, criaderos y tiendas que estén interesados en pautar sus productos o servicios sobre las plataformas que ofrecemos.</p>
+    </div>
+    <div class="col-md-15 col-sm-3">
+      <h4>Navegación</h4>
+      <ul>
+        <li><i class="fa fa-caret-right"></i><a href="https://www.holamascota.com/publicaciones/inicio/quienes-somos">Quienes Somos</a></li>
+        <li><i class="fa fa-caret-right"></i><a href="https://www.holamascota.com/publicaciones/inicio/preguntas-frecuentes">Preguntas Frecuentes</a></li>
+        <li><i class="fa fa-caret-right"></i><a href="https://www.holamascota.com/publicaciones/registro/terminos">Términos y Condiciones</a></li>
+        <li><i class="fa fa-caret-right"></i><a href="https://www.holamascota.com/tienda/devoluciones/">Políticas de Devoluciones</a></li>
+      </ul>
+    </div>
+    <div class="col-md-15 col-sm-3">
+      <h4>Formas de pago</h4>
+      <img src="https://www.holamascota.com/publicaciones/img/metodos_pago2.png">
+    </div>
+    <div class="col-md-15 col-sm-3">
+      <h4>Boletín de Noticias</h4>
+      <p>Apuntarse a nuestro boletín de:</p>
+      <form action="https://www.holamascota.com/publicaciones/registro/suscripciones" method="POST" role="form" onsubmit="return validar_lista()">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="publicaciones" value="publicaciones">
+            Publicaciones
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="tienda" value="tienda">
+            Tienda
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="blog" value="blog">
+            Blog
+          </label>
+        </div>
+        <div class="form-group has-feedback has-feedback-left">
+          <label class="control-label sr-only">Username</label>
+          <input type="email" name="correo_lista" id="correo_lista" class="form-control" placeholder="Ingrese su Email">
+          <i class="form-control-feedback fa fa-envelope"></i>
+          <button class="btn">Suscribirme</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-15 col-sm-3 contacto">
+      <h4>Tiene alguna consulta?</h4>
+      <button class="btn" data-toggle="modal" data-target="#modal-contacto">Contactese con holamascota</button>
+      <label>Cel: 300 478 7933</label>
+      <label>Dirección: Cra 70 # 32b - 34 Medellín Colombia</label>
+      <label>info@holamascota.com</label>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 copy">
+    </div>
+  </div>
+
+
+
+    <!--------------------------------- javascript Code --------------------->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+      $('.sliderPets__main').slick({
+  dots: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  arrows: true,
+});
+
+}); //close document
+  </script>
+</body>
+</html>
